@@ -91,6 +91,49 @@ a,
   cursor: pointer;
 }
 
+#postsFeed {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.post {
+  background-color: #d7d8d8;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.postUpperBar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.postUpperBar img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.postBody img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.postText {
+  font-size: 14px;
+  color: #333;
+}
+
+.image {
+  width: 60px;
+  height: 55px;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsl(0, 0%, 25%);

@@ -6,7 +6,7 @@
     <header style="width: 100%;">
       <div id="navBar">
         <div id="navLinksBlock" style="cursor: default">
-          <router-link to="/home" class="nav-link">Home</router-link>
+          <router-link to="/" class="nav-link">Home</router-link>
           <span id="linksNavBarSeparator" style="cursor: inherit">|</span>
           <router-link to="/contacts" class="nav-link">Contacts</router-link>
         </div>
