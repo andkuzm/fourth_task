@@ -8,7 +8,7 @@ import PostPage from "@/components/PostPage.vue";
 
 const routes = [
     { path: '/', component: Home , }, //meta: {requiresAuth: true}
-    { path: '/:date/:postBody', component: PostPage , props: true},
+    { path: '/:id', component: PostPage , props: true},
     { path: '/contacts', component: ContactUs },
     { path: '/signup', component: SignUp },
     { path: '/login', component: LogIn },
