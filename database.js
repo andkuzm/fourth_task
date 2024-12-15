@@ -1,17 +1,24 @@
-const { Pool } = require('pg');
-const pool = new Pool({
-    user: "postgres",         
-    password: "password",    
-    database: "database",      
-    host: "localhost",        
-    port: "5432"            
+const {Client} = require('pg');
+//const Pool = require("mysql/lib/Pool.сjs");
+const client = new Client({
+    user: "webapp_user",
+    password: "password",
+    database: "webAppdb",
+    host: "localhost",
+    port: "5432"
 });
+
+client.connect().then(() => {
+    console.log("connected")
+}).catch((err) => {
+    console.error(err);
+});
+
 
 const execute = async (query) => {
     try {
-        const client = await pool.connect(); 
-        const result = await client.query(query); 
-        client.release(); 
+        const result = await client.query(query);
+        client.release();
         return result;
     } catch (error) {
         console.error('Database query error:', error.stack);
@@ -45,7 +52,5 @@ const setupDatabase = async () => {
         console.error('Error setting up the database:', error.message);
     }
 };
-
-setupDatabase();
-
-module.exports = pool;
+//setupDatabase();
+module.exports = client;
