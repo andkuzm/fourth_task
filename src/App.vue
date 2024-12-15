@@ -13,7 +13,7 @@
       </div>
     </header>
 
-    <main style="position: relative; width: 50%; background-color: gray;">
+    <main style="position: relative; width: 90%; min-width: fit-content; background-color: #c3c3c3; border-radius: 2rem">
       <RouterView/>
     </main>
 

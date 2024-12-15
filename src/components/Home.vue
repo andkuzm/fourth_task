@@ -24,6 +24,10 @@ function deleteAll() {
   }).then((response) => {console.log(response.date);}).catch((error) => {console.error(error);});
 }
 
+function addPost() {
+  router.push('/addpost');
+}
+
 // Fetch posts when the component is mounted
 onMounted(() => {
   const token = localStorage.getItem("token");
@@ -47,7 +51,7 @@ onMounted(() => {
   <div id="mainContainer" style="display: flex; justify-content: center; flex-flow: column">
     <button @click="logout">Logout</button>
     <div id="postsFeed">
-      <div v-for="post in posts" :key="post.id" class="post">
+      <div v-for="post in posts" :key="post.id" class="post" >
         <router-link :to="`/${post.id}`">
           <div class="postUpperBar">
             <p class="post-date" style="margin-left: 70%">{{ post.date.split("T")[0] }}</p>
@@ -61,7 +65,7 @@ onMounted(() => {
     <!-- Logout button -->
 
     <div id="buttonsContainer" style="display: flex; justify-content: center;">
-      <router-link to="/addpost">Add post</router-link>
+      <button @click="addPost">Add post</button>
       <button @click="deleteAll">Delete all</button>
     </div>
   </div>

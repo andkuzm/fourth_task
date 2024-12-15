@@ -34,38 +34,29 @@ async function addPost() {
 
 <template>
   <div id="addPostContainer" style="text-align: center; margin-top: 50px;">
-    <h2>Add Post</h2>
+    <h3>Add Post</h3>
     <div
       style="
         display: inline-block;
         border: 1px solid #ccc;
-        padding: 20px;
+        padding: 2px;
         border-radius: 10px;
-        width: 300px;
+        width: 100%;
       "
     >
       <!-- Input field for the post body -->
       <label for="postBody" style="display: block; margin-bottom: 10px;">Body</label>
-      <input
+      <textarea
         id="postBody"
         v-model="postText"
         type="text"
         placeholder="Enter post body"
-        style="width: 90%; padding: 5px; border-radius: 5px; border: 1px solid #aaa;"
+        style="width: 50%; max-width: 90%; padding: 5px; border-radius: 5px; border: 1px solid #aaa;"
       />
       <br />
       <!-- Button to submit the post -->
       <button
         @click="addPost"
-        style="
-          margin-top: 15px;
-          padding: 5px 20px;
-          background-color: #4caf50;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        "
       >
         Add
       </button>
@@ -74,7 +65,16 @@ async function addPost() {
 </template>
 
 <style scoped>
+/*button {
+  margin-top: 15px;
+  padding: 5px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 button:hover {
   background-color: #45a049;
-}
+}*/
 </style>

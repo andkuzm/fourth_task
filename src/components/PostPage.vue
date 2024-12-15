@@ -5,10 +5,12 @@
 </script>
 
 <template>
-  <div id="loginBody" style="padding:10px;">
+  <div id="loginBody" style="padding:10px; max-width: 100%">
     <p class="loginNormalText">A Post</p>
     <div style="display:flex; flex-flow: column; align-items: center;">
-      <textarea v-model="body" required aria-label="body" type="text" placeholder="Post body" class="loginTextArea" id="addPostFirstArea">{{ id }}</textarea>
+      <textarea v-model="body"
+                style="width: 50%; max-width: 90%; padding: 5px; border-radius: 5px; border: 1px solid #aaa;"
+                required aria-label="body" type="text" placeholder="Post body" class="loginTextArea" id="addPostFirstArea">{{ id }} </textarea>
       <div style="display:flex; flex-flow: row; align-items: center;">
         <button id="updateButton" @click="updatePost">Update Post</button>
         <button id="deletePostButton">Delete Post</button>
