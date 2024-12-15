@@ -1,11 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const pool = require('./database.js'); // Import database connection
 
 const app = express();
 const port = 5000;
-
+const JWT_SECRET_KEY = "1234567890";
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -39,7 +41,12 @@ app.post('/login', async (req, res) => {
             [mail, password]
         );
         if (result.rows.length > 0) {
-            res.status(200).json({ message: 'Login successful' });
+            const token = jwt.sign(
+                { id: result.rows[0].id, mail: mail },
+                JWT_SECRET_KEY,
+                { expiresIn: '10h' }
+            );
+            res.status(200).json({ token: token });
         } else {
             res.status(401).json({ error: 'Invalid credentials' });
         }
@@ -60,11 +67,10 @@ app.get('/posts', async (req, res) => {
 
 // Add Post
 app.post('/posts', async (req, res) => {
-    const { postText } = req.body;
     try {
         const result = await pool.query(
             'INSERT INTO posts (postText) VALUES ($1) RETURNING *',
-            [postText]
+            [req.body.posttext]
         );
         res.status(201).json(result.rows[0]);
     } catch (error) {
@@ -104,9 +110,8 @@ app.get('/posts/:id', async (req, res) => { //app.get('/posts/:id', verifyToken,
 // Update a post
 app.put('/posts/:id', async (req, res) => {
     const { id } = req.params;
-    const { postText } = req.body;
     try {
-        await pool.query('UPDATE posts SET postText = $1 WHERE id = $2', [postText, id]);
+        await pool.query('UPDATE posts SET posttext = $1 WHERE id = $2', [req.body.body, id]);
         res.send("Post updated successfully");
     } catch (err) {
         res.status(500).send(err.message);

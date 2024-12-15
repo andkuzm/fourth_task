@@ -13,14 +13,10 @@ function logout() {
   router.push("/login"); // Redirect to login page
 }
 
-// Function to handle adding a post (placeholder)
-function addPost() {
-  console.log("Add post clicked");
-}
-
 // Clear all posts
 function deleteAll() {
-  posts.value = []; // Clear posts array
+  posts.value = [];
+  axios.delete("http://localhost:5000/posts").then((response) => {console.log(response.date);}).catch((error) => {console.error(error);});
 }
 
 // Fetch posts when the component is mounted
@@ -43,7 +39,7 @@ onMounted(() => {
     <button @click="logout">Logout</button>
     <div id="postsFeed">
       <div v-for="post in posts" :key="post.id" class="post">
-        <router-link to="/">
+        <router-link :to="`/${post.id}`">
           <div class="postUpperBar">
             <p class="post-date" style="margin-left: 70%">{{ post.date.split("T")[0] }}</p>
           </div>
