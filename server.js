@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const pool = require('./database'); // Import database connection
+const pool = require('./database.js'); // Import database connection
 
 const app = express();
 const port = 5000;
@@ -14,11 +14,15 @@ app.use(cors());
 
 // Sign Up Route
 app.post('/signup', async (req, res) => {
-    const { email, password } = req.body;
+    const { mail, password } = req.body;
+    if (!mail || !password) {
+        return res.status(400).json({ error: 'Mail and password are required' });
+    }
+    console.log('Request body:', req.body);
     try {
         const result = await pool.query(
-            'INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *',
-            [email, password]
+            'INSERT INTO users (mail, password) VALUES ($1, $2) RETURNING *',
+            [mail, password]
         );
         res.status(201).json(result.rows[0]);
     } catch (error) {
@@ -28,11 +32,11 @@ app.post('/signup', async (req, res) => {
 
 // Login Route
 app.post('/login', async (req, res) => {
-    const { email, password } = req.body;
+    const { mail, password } = req.body;
     try {
         const result = await pool.query(
-            'SELECT * FROM users WHERE email = $1 AND password = $2',
-            [email, password]
+            'SELECT * FROM users WHERE mail = $1 AND password = $2',
+            [mail, password]
         );
         if (result.rows.length > 0) {
             res.status(200).json({ message: 'Login successful' });
@@ -83,7 +87,7 @@ app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
 // Get a single post
-app.get('/posts/:id', verifyToken, async (req, res) => {
+app.get('/posts/:id', async (req, res) => { //app.get('/posts/:id', verifyToken, async (req, res) => {
     const { id } = req.params;
     try {
         const result = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
@@ -98,7 +102,7 @@ app.get('/posts/:id', verifyToken, async (req, res) => {
 });
 
 // Update a post
-app.put('/posts/:id', verifyToken, async (req, res) => {
+app.put('/posts/:id', async (req, res) => {
     const { id } = req.params;
     const { postText } = req.body;
     try {
@@ -108,3 +112,4 @@ app.put('/posts/:id', verifyToken, async (req, res) => {
         res.status(500).send(err.message);
     }
 });
+//https://stackoverflow.com/questions/60875409/node-js-express-execute-inside-app-post

@@ -1,6 +1,7 @@
 <script setup>
 import router from "@/router.js";
 import { ref, onMounted } from 'vue';
+import axios from "axios";
 
 // Declare reactive data
 const posts = ref([]);
@@ -24,15 +25,14 @@ function deleteAll() {
 
 // Fetch posts when the component is mounted
 onMounted(() => {
-  fetch("/src/assets/posts.json") // Adjusted file path
+  axios.get("http://localhost:5000/posts")
     .then((response) => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
+      var posts = response.data;
+      console.log(posts[0]);
+      return posts;
     })
     .then((data) => {
-      posts.value = data.posts; // Update the reactive posts array
+      posts.value = data; // Update the reactive posts array
     })
     .catch((error) => console.error(error));
 });
@@ -40,20 +40,20 @@ onMounted(() => {
 
 <template>
   <div id="mainContainer" style="display: flex; justify-content: center; flex-flow: column">
+    <button @click="logout">Logout</button>
     <div id="postsFeed">
       <div v-for="post in posts" :key="post.id" class="post">
         <router-link to="/">
           <div class="postUpperBar">
-            <p class="post-date" style="margin-left: 70%">{{ post.date }}</p>
+            <p class="post-date" style="margin-left: 70%">{{ post.date.split("T")[0] }}</p>
           </div>
           <div class="postBody">
-            <p class="postText">{{ post.postText }}</p>
+            <p class="postText">{{ post.posttext }}</p>
           </div>
         </router-link>
       </div>
     </div>
     <!-- Logout button -->
-    <button @click="logout">Logout</button>
 
     <div id="buttonsContainer" style="display: flex; justify-content: center;">
       <router-link to="/addpost">Add post</router-link>
