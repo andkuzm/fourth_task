@@ -25,11 +25,14 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log(this.mail, this.password);
+      const token = localStorage.getItem("token");
       axios
           .post("http://localhost:5000/login", {
             mail: this.mail,
             password: this.password,
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
           })
           .then((response) => {
             localStorage.setItem("token", response.data.token);

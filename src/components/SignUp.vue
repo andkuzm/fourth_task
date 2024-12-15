@@ -16,6 +16,7 @@
 
 <script>
 import axios from "axios";
+import router from "@/router";
 
 export default {
   data() {
@@ -34,6 +35,7 @@ export default {
           })
           .then((response) => {
             console.log(response.data);
+            router.push('/login')
           })
           .catch((error) => {
             console.error(error);

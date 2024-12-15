@@ -28,14 +28,24 @@ export default {
   },
   methods: {
     getBody(){
-      axios.get(`http://localhost:5000/posts/${this.id}`).then(response => {
+      const token = localStorage.getItem("token");
+      axios.get(`http://localhost:5000/posts/${this.id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }).then(response => {
         this.body = response.data.posttext;
       }).catch(error => {console.log(error)});
     },
     async updatePost() {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.put(`http://localhost:5000/posts/${this.id}`, {
           body: this.body,
+        },{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         });
 
         // Handle successful response

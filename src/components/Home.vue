@@ -16,15 +16,24 @@ function logout() {
 // Clear all posts
 function deleteAll() {
   posts.value = [];
-  axios.delete("http://localhost:5000/posts").then((response) => {console.log(response.date);}).catch((error) => {console.error(error);});
+  const token = localStorage.getItem("token");
+  axios.delete("http://localhost:5000/posts", {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }).then((response) => {console.log(response.date);}).catch((error) => {console.error(error);});
 }
 
 // Fetch posts when the component is mounted
 onMounted(() => {
-  axios.get("http://localhost:5000/posts")
+  const token = localStorage.getItem("token");
+  axios.get("http://localhost:5000/posts", {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
     .then((response) => {
       var posts = response.data;
-      console.log(posts[0]);
       return posts;
     })
     .then((data) => {

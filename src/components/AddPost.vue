@@ -15,8 +15,11 @@ async function addPost() {
     // Send post body to the backend
     await axios.post(
       "http://localhost:5000/posts",
-      { posttext: postText.value },
-      { headers: { Authorization: token } }
+      { posttext: postText.value},{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+      }
     );
 
     alert("Post added successfully!");
