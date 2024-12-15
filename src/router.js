@@ -3,11 +3,13 @@ import Home from '@/components/Home.vue';
 import ContactUs from '@/components/ContactUs.vue';
 import SignUp from "@/components/SignUp.vue";
 import LogIn from "@/components/LogIn.vue";
+import AddPost from '@/components/AddPost.vue';
 
 const routes = [
     { path: '/home', component: Home , meta: {requiresAuth: true}}, //meta: {requiresAuth: true}
     { path: '/contacts', component: ContactUs },
     { path: '/signup', component: SignUp },
+    { path: '/add-post', component: AddPost },
     { path: '/login', component: LogIn },
 ];
 
