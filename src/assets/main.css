@@ -19,8 +19,6 @@
   border-bottom: 2px solid #ffffff;
 }
 
-
-
 .nav-link {
   padding: 5px;
   padding-left: 20px;
@@ -45,13 +43,16 @@ a,
   font-size: 13px;
 }
 #loginBody {
+  max-width: 500px;
   width: 100%;
   background-color: #e0dfdf;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin: 0 auto;
 }
+
 /*Child Selector*/
 #loginBody > h2 {
   color: rgb(0, 0, 0);
@@ -194,3 +195,10 @@ a,
   background-color: #3a7ccc;
 }
 
+#mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Полная высота окна */
+  background-color: #b0b0b0; /* Тёмно-серый фон */
+}
