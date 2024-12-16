@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    getBody(){
+    getBody() {
       const token = localStorage.getItem("token");
       axios.get(`http://localhost:5000/posts/${this.id}`, {
         headers: {
@@ -44,35 +44,51 @@ export default {
         }
       }).then(response => {
         this.body = response.data.posttext;
-      }).catch(error => {console.log(error)});
+      }).catch(error => { console.log(error) });
     },
     async updatePost() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.put(`http://localhost:5000/posts/${this.id}`, {
           body: this.body,
-        },{
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
+        }, {
+          headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        // Handle successful response
-        console.log(response.data); // "Post updated successfully"
+        console.log(response.data); 
         alert("Post updated successfully!");
       } catch (error) {
-        // Handle error
         console.error('Error updating post:', error);
         alert('Error updating post');
       }
-    }
+    },
+    async deletePost() {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.delete(
+          `http://localhost:5000/posts/${this.id}`,
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          }
+        );
+
+        console.log(response.data);
+        alert("Post deleted successfully!");
+        this.$router.push("/");
+      } catch (error) {
+        console.error("Error deleting post:", error);
+        alert("Error deleting post");
+      }
+    },
   },
   mounted() {
     this.getBody();
   }
 }
-
 </script>
+
 <style scoped>
 #postContainer {
   display: flex;

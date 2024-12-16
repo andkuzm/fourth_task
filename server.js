@@ -141,15 +141,16 @@ function validateToken(req, res, next) {
 app.delete('/posts/:id', validateToken, async (req, res) => {
     const { id } = req.params;
     try {
-        const result = await pool.query('DELETE FROM posts WHERE id = $1 RETURNING *', [id]);
-        if (result.rows.length) {
-            res.status(200).json({ message: `Post with id ${id} deleted successfully`});
-        } else {
-            res.status(404).json({ error: `Post with id ${id} not found` });
-        }
+      const result = await pool.query('DELETE FROM posts WHERE id = $1 RETURNING *', [id]);
+      if (result.rows.length) {
+        res.status(200).json({ message: `Post with id ${id} deleted successfully` });
+      } else {
+        res.status(404).json({ error: `Post with id ${id} not found` });
+      }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+      res.status(500).json({ error: error.message });
     }
-});
+  });
+  
 
 //https://stackoverflow.com/questions/60875409/node-js-express-execute-inside-app-post
