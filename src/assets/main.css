@@ -194,11 +194,3 @@ a,
 .deleteButton:hover {
   background-color: #3a7ccc;
 }
-
-#mainContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Полная высота окна */
-  background-color: #b0b0b0; /* Тёмно-серый фон */
-}
