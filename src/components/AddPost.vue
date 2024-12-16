@@ -33,48 +33,69 @@ async function addPost() {
 </script>
 
 <template>
-  <div id="addPostContainer" style="text-align: center; margin-top: 50px;">
-    <h3>Add Post</h3>
-    <div
-      style="
-        display: inline-block;
-        border: 1px solid #ccc;
-        padding: 2px;
-        border-radius: 10px;
-        width: 100%;
-      "
-    >
-      <!-- Input field for the post body -->
-      <label for="postBody" style="display: block; margin-bottom: 10px;">Body</label>
-      <textarea
-        id="postBody"
-        v-model="postText"
-        type="text"
-        placeholder="Enter post body"
-        style="width: 50%; max-width: 90%; padding: 5px; border-radius: 5px; border: 1px solid #aaa;"
-      />
-      <br />
-      <!-- Button to submit the post -->
-      <button
-        @click="addPost"
-      >
-        Add
-      </button>
+  <div id="addPostContainer">
+    <h3 class="addPostHeader">Add Post</h3>
+    <div class="formContainer">
+      <div class="inputGroup">
+        <label for="postBody" class="postLabel">Body</label>
+        <input
+          id="postBody"
+          v-model="postText"
+          type="text"
+          placeholder="Enter post body"
+          class="postInput"
+        />
+      </div>
+
+      <button @click="addPost" class="addButton">Add</button>
     </div>
   </div>
 </template>
-
 <style scoped>
-/*button {
-  margin-top: 15px;
-  padding: 5px 20px;
-  background-color: #4caf50;
+#addPostContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3f5e9; 
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 50px auto;
+}
+.addPostHeader {
+   font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.inputGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.postInput {
+  width: 70%;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.addButton {
+   background-color: #4a9cff; 
   color: white;
   border: none;
+  padding: 8px 15px;
   border-radius: 5px;
+  font-size: 1rem;
   cursor: pointer;
+  margin-top: 10px;
+  display: block; 
+  margin-left: auto;
+  margin-right: auto; 
+  text-align: center;
 }
-button:hover {
-  background-color: #45a049;
-}*/
+
+.addButton:hover {
+  background-color: #3a7ccc; 
+}
 </style>

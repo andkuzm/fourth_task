@@ -3,9 +3,8 @@
 
 <template>
   <div id="loginBody" style="padding:10px;">
-    <h2 id="loginWelcomeText">Welcome to PostIt</h2>
+    <h2 id="loginWelcomeText">Create a new account</h2>
     <br/>
-    <p class="loginNormalText">Create a new account</p>
     <form @submit.prevent="handleSubmit">
       <input v-model="mail" required aria-label="mail" type="email" placeholder="Email" class="loginTextArea" id="loginFirstArea">
       <input v-model="password" required aria-label="password" type="password" placeholder="Password" class="loginTextArea" id="loginSecondArea">

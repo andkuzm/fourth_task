@@ -48,13 +48,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="mainContainer" style="display: flex; justify-content: center; flex-flow: column">
-    <button @click="logout">Logout</button>
+  <div id="mainContainer">
+    <div class="topButtonContainer">
+      <button @click="logout" class="logoutButton">Logout</button>
+    </div>
     <div id="postsFeed">
-      <div v-for="post in posts" :key="post.id" class="post" >
-        <router-link :to="`/${post.id}`">
+      <div v-for="post in posts" :key="post.id" class="post">
+        <router-link :to="`/${post.id}`" class="postLink">
           <div class="postUpperBar">
-            <p class="post-date" style="margin-left: 70%">{{ post.date.split("T")[0] }}</p>
+            <p class="postDate">{{ post.date.split("T")[0] }}</p>
           </div>
           <div class="postBody">
             <p class="postText">{{ post.posttext }}</p>
@@ -62,11 +64,11 @@ onMounted(() => {
         </router-link>
       </div>
     </div>
-    <!-- Logout button -->
-
-    <div id="buttonsContainer" style="display: flex; justify-content: center;">
-      <button @click="addPost">Add post</button>
-      <button @click="deleteAll">Delete all</button>
+    <div id="buttonsContainer">
+      <button @click="addPost" class="actionButton">Add post</button>
+      <button @click="deleteAll" class="actionButton deleteButton">
+        Delete all
+      </button>
     </div>
   </div>
 </template>

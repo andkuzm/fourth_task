@@ -5,15 +5,22 @@
 </script>
 
 <template>
-  <div id="loginBody" style="padding:10px; max-width: 100%">
-    <p class="loginNormalText">A Post</p>
-    <div style="display:flex; flex-flow: column; align-items: center;">
-      <textarea v-model="body"
-                style="width: 50%; max-width: 90%; padding: 5px; border-radius: 5px; border: 1px solid #aaa;"
-                required aria-label="body" type="text" placeholder="Post body" class="loginTextArea" id="addPostFirstArea">{{ id }} </textarea>
-      <div style="display:flex; flex-flow: row; align-items: center;">
-        <button id="updateButton" @click="updatePost">Update Post</button>
-        <button id="deletePostButton">Delete Post</button>
+  <div id="postContainer">
+    <p class="postHeader">A Post</p>
+    <div class="postForm">
+      <div class="inputGroup">
+        <label for="postBody" class="postLabel">Body</label>
+        <input
+          v-model="body"
+          id="postBody"
+          type="text"
+          placeholder="body"
+          class="postInput"
+        />
+      </div>
+      <div class="buttonGroup">
+        <button @click="updatePost" class="updateButton">Update</button>
+        <button @click="deletePost" class="deleteButton">Delete</button>
       </div>
     </div>
   </div>
@@ -66,3 +73,67 @@ export default {
 }
 
 </script>
+<style scoped>
+#postContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3f5e9; 
+  padding: 50px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 50px auto;
+  
+}
+.postHeader {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.inputGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.postLabel {
+  font-size: 15px;
+}
+.postInput {
+  width: 70%;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.updateButton,
+.deleteButton {
+  background-color: #4a9cff; 
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.updateButton:hover {
+  background-color: #3a7ccc; 
+}
+
+.deleteButton {
+  background-color: #4a9cff; 
+}
+
+.deleteButton:hover {
+  background-color: #3a7ccc; 
+}
+</style>

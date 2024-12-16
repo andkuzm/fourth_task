@@ -1,17 +1,47 @@
 <template>
-  <div id="loginBody" style="padding:10px;">
-    <h2 id="loginWelcomeText">Welcome to PostIt</h2>
-    <br/>
-    <router-link to="/signup" class="loginBlueText">Create an account</router-link>
-    <p class="loginNormalText">or</p>
-    <p class="loginNormalText">Please log in</p>
-    <form @submit.prevent="handleSubmit">
-      <input v-model="mail" required aria-label="mail" type="email" placeholder="Email" class="loginTextArea" id="loginFirstArea">
-      <input v-model="password" required aria-label="password" type="password" placeholder="Password" class="loginTextArea" id="loginSecondArea">
-      <input id="logInButton" type="submit" value="Log in">
-    </form>
+  <div id="loginBody">
+    <div style="padding: 20px;">
+      <h2 id="loginWelcomeText">Welcome to PostIt</h2 >
+      <form @submit.prevent="handleSubmit">
+        <label for="email" style="display: block; text-align: left;">Email</label>
+        <input
+          v-model="mail"
+          required
+          type="email"
+          placeholder="Email"
+          class="loginTextArea"
+        />
+        <label for="password" style="display: block; text-align: left;">Password</label>
+        <input
+          v-model="password"
+          required
+          type="password"
+          placeholder="Password"
+          class="loginTextArea"
+        />
+        <div style="display: flex; justify-content: center; margin-top: 15px;">
+          <button
+            type="submit"
+            id="logInButton"
+            style="margin-right: 10px;"
+          >
+            Login
+          </button>
+          <span style="align-self: center;">Or</span>
+          <button
+            type="button"
+            @click="$router.push('/signup')"
+            id="logInButton"
+            style="background-color: #4a9cff; margin-left: 10px;"
+          >
+            Signup
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
+
 
 <script>
 import axios from "axios";
@@ -34,7 +64,7 @@ export default {
               'Authorization': `Bearer ${token}`
             }
           })
-          .then((response) => {
+           .then((response) => {
             localStorage.setItem("token", response.data.token);
             this.$router.push('/');
           })

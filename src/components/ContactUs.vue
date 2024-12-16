@@ -2,8 +2,8 @@
 </script>
 
 <template>
-  <div id="ContactUsContainer" style="padding-top: 10%; border-radius: 2rem; background-color: lightgray;">
-    <p style="text-align: center;">Contact us:</p>
+  <div id="ContactUsContainer" style=" border-radius: 2rem; background-color: lightgray;">
+    <p style="text-align: center;ma">Contact us:</p>
     <p style="text-align: center;">by phone 6555555</p>
     <p style="text-align: center;">by mail mail@mail.com</p>
   </div>
@@ -12,3 +12,4 @@
 <style scoped>
 
 </style>
+
