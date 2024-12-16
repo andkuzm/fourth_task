@@ -68,8 +68,7 @@ export default {
         const response = await axios.delete(
           `http://localhost:5000/posts/${this.id}`,
           {
-            headers: {
-              'Authorization': `Bearer ${token}`
+            headers: { 'Authorization': `Bearer ${token}`
             }
           }
         );
@@ -90,66 +89,5 @@ export default {
 </script>
 
 <style scoped>
-#postContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f3f5e9; 
-  padding: 50px;
-  border-radius: 10px;
-  max-width: 500px;
-  margin: 50px auto;
-  
-}
-.postHeader {
-  font-size: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-}
 
-.inputGroup {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-.postLabel {
-  font-size: 15px;
-}
-.postInput {
-  width: 70%;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 15px;
-}
-
-.buttonGroup {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.updateButton,
-.deleteButton {
-  background-color: #4a9cff; 
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 0 10px;
-}
-
-.updateButton:hover {
-  background-color: #3a7ccc; 
-}
-
-.deleteButton {
-  background-color: #4a9cff; 
-}
-
-.deleteButton:hover {
-  background-color: #3a7ccc; 
-}
 </style>

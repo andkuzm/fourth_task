@@ -52,50 +52,5 @@ async function addPost() {
   </div>
 </template>
 <style scoped>
-#addPostContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f3f5e9; 
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-  margin: 50px auto;
-}
-.addPostHeader {
-   font-size: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.inputGroup {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-.postInput {
-  width: 70%;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 1rem;
-}
 
-.addButton {
-   background-color: #4a9cff; 
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 10px;
-  display: block; 
-  margin-left: auto;
-  margin-right: auto; 
-  text-align: center;
-}
-
-.addButton:hover {
-  background-color: #3a7ccc; 
-}
 </style>
