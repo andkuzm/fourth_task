@@ -1,6 +1,6 @@
 # fourth_task
 
-To run the app first npm install command must be executed, postgreSQL service must be on, server.js must be running, and then npm run as instructed below
+To run the app first npm install command must be executed, postgreSQL service must be on, server.js must be running, and then npm run dev
 
 ## Recommended IDE Setup
 
