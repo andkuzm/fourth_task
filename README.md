@@ -1,6 +1,6 @@
 # fourth_task
 
-This template should help get you started developing with Vue 3 in Vite.
+To run the app first npm install command must be executed, postgreSQL service must be on, server.js must be running, and then npm run as instructed below
 
 ## Recommended IDE Setup
 
